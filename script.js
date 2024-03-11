@@ -1,60 +1,63 @@
-const titleElement = document.querySelector(".title");
-const buttonsContainer = document.querySelector(".buttons");
-const yesButton = document.querySelector(".btn--yes");
-const noButton = document.querySelector(".btn--no");
-const catImg = document.querySelector(".cat-img");
+"use strict";
 
-const MAX_IMAGES = 5;
+const elementoTitulo = document.querySelector(".titulo");
+const containerBotoes = document.querySelector(".botoes");
+const botaoSim = document.querySelector(".btn--sim");
+const botaoNao = document.querySelector(".btn--nao");
+const imgGato = document.querySelector(".img-gato");
 
-let play = true;
-let noCount = 0;
+const MAX_IMAGENS = 5;
 
-yesButton.addEventListener("click", handleYesClick);
+let jogando = true;
+let contadorNao = 0;
 
-noButton.addEventListener("click", function () {
-  if (play) {
-    noCount++;
-    const imageIndex = Math.min(noCount, MAX_IMAGES);
-    changeImage(imageIndex);
-    resizeYesButton();
-    updateNoButtonText();
-    if (noCount === MAX_IMAGES) {
-      play = false;
+botaoSim.addEventListener("click", lidarComCliqueSim);
+
+botaoNao.addEventListener("click", function () {
+  if (jogando) {
+    contadorNao++;
+    const indiceImagem = Math.min(contadorNao, MAX_IMAGENS);
+    alterarImagem(indiceImagem);
+    redimensionarBotaoSim();
+    atualizarTextoBotaoNao();
+    if (contadorNao === MAX_IMAGENS) {
+      jogando = false;
     }
   }
 });
 
-function handleYesClick() {
-  titleElement.innerHTML = "Yayyy!! :3";
-  buttonsContainer.classList.add("hidden");
-  changeImage("yes");
+function lidarComCliqueSim() {
+  elementoTitulo.innerHTML = "Yayyy!! :3";
+  containerBotoes.classList.add("escondido");
+  alterarImagem("sim");
 }
 
-function resizeYesButton() {
-  const computedStyle = window.getComputedStyle(yesButton);
-  const fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
-  const newFontSize = fontSize * 1.6;
+function redimensionarBotaoSim() {
+  const estiloCalculado = window.getComputedStyle(botaoSim);
+  const tamanhoFonte = parseFloat(estiloCalculado.getPropertyValue("font-size"));
+  const novoTamanhoFonte = tamanhoFonte * 1.6;
 
-  yesButton.style.fontSize = ${newFontSize}px;
+  botaoSim.style.fontSize = `${novoTamanhoFonte}px`;
 }
 
-function generateMessage(noCount) {
-  const messages = [
-   "Não",
-    "Você tem certeza?",
-    "poxa...",
-    "faz isso comigo não:(",
-    "Meu coração está partido buabua",
-    "Indo chorar i tals..."
+function gerarMensagem(contadorNao) {
+  const mensagens = [
+    "Não",
+    "Tem certeza?",
+    "Por favor, Pookie",
+    "Não faça isso comigo :(",
+    "Você está partindo meu coração",
+    "Vou chorar...",
+  ];
 
-  const messageIndex = Math.min(noCount, messages.length - 1);
-  return messages[messageIndex];
+  const indiceMensagem = Math.min(contadorNao, mensagens.length - 1);
+  return mensagens[indiceMensagem];
 }
 
-function changeImage(image) {
-  catImg.src = img/cat-${image}.jpg;
+function alterarImagem(imagem) {
+  imgGato.src = `img/gato-${imagem}.jpg`;
 }
 
-function updateNoButtonText() {
-  noButton.innerHTML = generateMessage(noCount);
+function atualizarTextoBotaoNao() {
+  botaoNao.innerHTML = gerarMensagem(contadorNao);
 }
