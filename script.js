@@ -1,5 +1,3 @@
-use strict";
-
 const titleElement = document.querySelector(".title");
 const buttonsContainer = document.querySelector(".buttons");
 const yesButton = document.querySelector(".btn--yes");
@@ -37,25 +35,24 @@ function resizeYesButton() {
   const fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
   const newFontSize = fontSize * 1.6;
 
-  yesButton.style.fontSize = `${newFontSize}px`;
+  yesButton.style.fontSize = ${newFontSize}px;
 }
 
 function generateMessage(noCount) {
   const messages = [
-    "No",
-    "Are you sure?",
-    "Pookie please",
-    "Don't do this to me :(",
-    "You're breaking my heart",
-    "I'm gonna cry...",
-  ];
+   "Não",
+    "Você tem certeza?",
+    "poxa...",
+    "faz isso comigo não:(",
+    "Meu coração está partido buabua",
+    "Indo chorar i tals..."
 
   const messageIndex = Math.min(noCount, messages.length - 1);
   return messages[messageIndex];
 }
 
 function changeImage(image) {
-  catImg.src = `img/cat-${image}.jpg`;
+  catImg.src = img/cat-${image}.jpg;
 }
 
 function updateNoButtonText() {
