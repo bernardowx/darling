@@ -2,8 +2,8 @@
 
 const titleElement = document.querySelector(".title");
 const buttonsContainer = document.querySelector(".buttons");
-const yesButton = document.querySelector(".btn--yes");
-const noButton = document.querySelector(".btn--no");
+const yesButton = document.querySelector(".btn--sim");
+const noButton = document.querySelector(".btn--não");
 const catImg = document.querySelector(".cat-img");
 
 const MAX_IMAGES = 5;
@@ -11,9 +11,9 @@ const MAX_IMAGES = 5;
 let play = true;
 let noCount = 0;
 
-yesButton.addEventListener("click", handleYesClick);
+simButton.addEventListener("click", handleSimClick);
 
-noButton.addEventListener("click", function () {
+nãoButton.addEventListener("click", function () {
   if (play) {
     noCount++;
     const imageIndex = Math.min(noCount, MAX_IMAGES);
@@ -26,28 +26,28 @@ noButton.addEventListener("click", function () {
   }
 });
 
-function handleYesClick() {
-  titleElement.innerHTML = "Yayyy!! :3";
+function handleSimClick() {
+  titleElement.innerHTML = Te amo!! :3";
   buttonsContainer.classList.add("hidden");
-  changeImage("yes");
+  changeImage("sim");
 }
 
-function resizeYesButton() {
-  const computedStyle = window.getComputedStyle(yesButton);
+function resizeSimButton() {
+  const computedStyle = window.getComputedStyle(simButton);
   const fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
   const newFontSize = fontSize * 1.6;
 
-  yesButton.style.fontSize = `${newFontSize}px`;
+  simButton.style.fontSize = `${newFontSize}px`;
 }
 
 function generateMessage(noCount) {
   const messages = [
-    "No",
-    "Are you sure?",
-    "Pookie please",
-    "Don't do this to me :(",
-    "You're breaking my heart",
-    "I'm gonna cry...",
+    "Não",
+    "Você tem certeza?",
+    "poxa...",
+    "faz isso comigo não:(",
+    "Meu coração está partido buabua",
+    "Indo chorar i tals...",
   ];
 
   const messageIndex = Math.min(noCount, messages.length - 1);
@@ -58,6 +58,6 @@ function changeImage(image) {
   catImg.src = `img/cat-${image}.jpg`;
 }
 
-function updateNoButtonText() {
-  noButton.innerHTML = generateMessage(noCount);
+function updateNãoButtonText() {
+  nãoButton.innerHTML = generateMessage(noCount);
 }
