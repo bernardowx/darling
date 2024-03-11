@@ -1,3 +1,5 @@
+use strict";
+
 const titleElement = document.querySelector(".title");
 const buttonsContainer = document.querySelector(".buttons");
 const yesButton = document.querySelector(".btn--yes");
@@ -35,7 +37,7 @@ function resizeYesButton() {
   const fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
   const newFontSize = fontSize * 1.6;
 
-  yesButton.style.fontSize = ${newFontSize}px;
+  yesButton.style.fontSize = `${newFontSize}px`;
 }
 
 function generateMessage(noCount) {
@@ -53,7 +55,7 @@ function generateMessage(noCount) {
 }
 
 function changeImage(image) {
-  catImg.src = img/cat-${image}.jpg;
+  catImg.src = `img/cat-${image}.jpg`;
 }
 
 function updateNoButtonText() {
